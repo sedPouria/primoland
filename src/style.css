@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+/* dark: بر اساس data-theme="dark" روی <html> */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ============ رنگ‌های تم (دو بلوک جدا برای لایت و دارک) ============ */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #eef0fc;
+  --glow-a: #cdbcf6;
+  --glow-b: #c3d5f8;
+  --glow-c: #ecd0f6;
+  --surface: #ffffff;
+  --border: #e7e4f7;
+  --text: #1a1640;
+  --muted: #6b6890;
+  --accent: #3b2fdb;
+  --on-accent: #ffffff;
+  --accent-soft: #e8e5ff;
+  --hero-from: #241f5c;
+  --hero-to: #2a2468;
+  --nav-bg: rgba(255, 255, 255, .96);
+  --card-shadow: 0 6px 20px rgba(59, 47, 219, .07);
+
+  --tg-bg: #dff0fb;  --tg-fg: #1b8fc9;
+  --gpt-bg: #d9f3ea; --gpt-fg: #0f9d7a;
+  --cl-bg: #fbeae3;  --cl-fg: #d97757;
+  --gem-bg: #e2ebfd; --gem-fg: #4285f4;
+  --mj-bg: #ebe4fd;  --mj-fg: #7c5cf0;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #090a1c;
+  --glow-a: #40297f;
+  --glow-b: #13286a;
+  --glow-c: #3f1a5f;
+  --surface: #1a1836;
+  --border: #2a2750;
+  --text: #ffffff;
+  --muted: #a3a0c6;
+  --accent: #ffc93c;
+  --on-accent: #1a1640;
+  --accent-soft: #2a2650;
+  --hero-from: #2e2a80;
+  --hero-to: #3a3496;
+  --nav-bg: rgba(12, 12, 32, .96);
+  --card-shadow: 0 6px 20px rgba(0, 0, 0, .25);
+
+  --tg-bg: #1e2f52;  --tg-fg: #2a9ddb;
+  --gpt-bg: #163a3d; --gpt-fg: #10a37f;
+  --cl-bg: #3a2a3e;  --cl-fg: #e07b5a;
+  --gem-bg: #1f2a5a; --gem-fg: #4a86f5;
+  --mj-bg: #2c2a5c;  --mj-fg: #8a6cf5;
+}
+
+/* ============ معرفی رنگ‌های تم به Tailwind (bg-surface، text-muted، ...) ============ */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-line: var(--border);
+  --color-fg: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-hero-from: var(--hero-from);
+  --color-hero-to: var(--hero-to);
+  --color-nav: var(--nav-bg);
+
+  --color-tg-bg: var(--tg-bg);   --color-tg-fg: var(--tg-fg);
+  --color-gpt-bg: var(--gpt-bg); --color-gpt-fg: var(--gpt-fg);
+  --color-cl-bg: var(--cl-bg);   --color-cl-fg: var(--cl-fg);
+  --color-gem-bg: var(--gem-bg); --color-gem-fg: var(--gem-fg);
+  --color-mj-bg: var(--mj-bg);   --color-mj-fg: var(--mj-fg);
+
+  --shadow-card: var(--card-shadow);
+}
+
+/* ============ رنگ‌های ثابت، فونت و انیمیشن ============ */
+@theme {
+  --font-sans: "Vazirmatn", Tahoma, system-ui, sans-serif;
+  --color-brand-yellow: #ffc93c;
+  --color-navy: #2b246b;
+  --color-ink: #1a1640;
+  --ease-smooth: cubic-bezier(.4, 0, .2, 1);
+  --animate-nav-pop: nav-pop .55s cubic-bezier(.34, 1.56, .64, 1);
+
+  @keyframes nav-pop {
+    0%   { transform: translateY(6px) scale(.8); }
+    60%  { transform: translateY(-4px) scale(1.2); }
+    100% { transform: none; }
+  }
+}
+
+/* استایل مشترک آیکون‌های SVG (اندازه را با size-* بده) */
+@utility icon {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+
+/* در Tailwind v4 دکمه‌ها به‌صورت پیش‌فرض cursor: default دارند */
+@layer base {
+  button:not(:disabled), [role="button"]:not(:disabled) { cursor: pointer; }
+}
+
+/* ============ پس‌زمینه‌ی نورانی ============ */
+/* ثبت پراپرتی‌ها تا رنگ نورها هم موقع تغییر تم انیمیت شوند */
+@property --glow-a { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --glow-b { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --glow-c { syntax: "<color>"; inherits: true; initial-value: transparent; }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(70% 50% at 50% 0%, var(--glow-a), transparent 72%),
+    radial-gradient(60% 50% at 0% 100%, var(--glow-b), transparent 72%),
+    radial-gradient(60% 50% at 100% 100%, var(--glow-c), transparent 72%);
+}
+
+/* ============ انیمیشن نرم تغییر تم ============ */
+/* کلاس theme-anim را JS فقط موقع تغییر تم می‌گذارد */
+html.theme-anim,
+html.theme-anim *,
+html.theme-anim *::before,
+html.theme-anim *::after {
+  transition-property: background-color, color, border-color, fill, stroke, box-shadow, opacity, rotate, scale, translate, transform !important;
+  transition-duration: .6s !important;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1) !important;
+}
+/* رنگ نورها فقط روی <html> انیمیت می‌شود تا در فرزندان تأخیر جمع نشود */
+html.theme-anim {
+  transition-property: --glow-a, --glow-b, --glow-c !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
+    transition: none !important;
+  }
+}
