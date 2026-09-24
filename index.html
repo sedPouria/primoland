@@ -1,345 +1,553 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl" data-theme="light">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#eef0fc">
-<title>پریمو | اکانت پرمیوم تلگرام و هوش مصنوعی</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#eef0fc" />
+    <title>پریمو | اکانت پرمیوم تلگرام و هوش مصنوعی</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-<link rel="stylesheet" href="./src/tailwind.css">
+    <link rel="stylesheet" href="./src/tailwind.css" />
 
-<!-- تنظیم تم قبل از رندر صفحه (جلوگیری از پرش رنگ) -->
-<script>
-  (function () {
-    try {
-      var saved = localStorage.getItem('theme');
-      var t = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', t);
-    } catch (e) {}
-  })();
-</script>
-</head>
+    <!-- تنظیم تم قبل از رندر صفحه (جلوگیری از پرش رنگ) -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var t =
+            saved ||
+            (matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light");
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
 
-<body class="bg-bg pb-[calc(104px+env(safe-area-inset-bottom,0px))] font-sans leading-[1.7] text-fg lg:pb-10">
+  <body
+    class="bg-bg pb-[calc(104px+env(safe-area-inset-bottom,0px))] font-sans leading-[1.7] text-fg lg:pb-10"
+  >
+    <!-- آیکون‌ها -->
+    <svg width="0" height="0" class="absolute" aria-hidden="true">
+      <symbol id="i-cart" viewBox="0 0 24 24">
+        <path d="M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h8.2a1 1 0 0 0 1-.8L19 8H6.2" />
+        <circle cx="9" cy="20" r="1" />
+        <circle cx="17" cy="20" r="1" />
+      </symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+      </symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4" />
+        <path
+          d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+        />
+      </symbol>
+      <symbol id="i-search" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7" />
+        <path d="M21 21l-4.5-4.5" />
+      </symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24">
+        <path d="M13 2 4 14h7l-1 8 9-12h-7z" />
+      </symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24">
+        <path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" />
+      </symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24">
+        <path d="M4 5h16v11H9l-5 4z" />
+      </symbol>
+      <symbol id="i-home" viewBox="0 0 24 24">
+        <path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
+      </symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24">
+        <rect x="4" y="4" width="6.5" height="6.5" rx="1.5" />
+        <rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5" />
+        <rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5" />
+        <rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5" />
+      </symbol>
+      <symbol id="i-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
+      </symbol>
+    </svg>
 
-<!-- آیکون‌ها -->
-<svg width="0" height="0" class="absolute" aria-hidden="true">
-  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h8.2a1 1 0 0 0 1-.8L19 8H6.2"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></symbol>
-  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
-  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
-  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></symbol>
-  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></symbol>
-  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
-  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
-  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></symbol>
-  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></symbol>
-</svg>
+    <main
+      class="mx-auto max-w-120 px-[clamp(14px,5vw,20px)] pt-4 md:max-w-240 lg:max-w-280 lg:pt-6"
+    >
+      <!-- هدر -->
+      <header class="flex items-center justify-between">
+        <a href="#" class="flex items-center gap-2.5 text-lg font-extrabold">
+          <span
+            class="grid size-10 place-items-center rounded-xl bg-accent text-xl font-extrabold text-on-accent"
+            >پ</span
+          >
+          <span>پریمولند</span>
+        </a>
 
-<main class="mx-auto max-w-120 px-[clamp(14px,5vw,20px)] pt-4 md:max-w-240 lg:max-w-280 lg:pt-6">
+        <!-- منوی دسکتاپ -->
+        <nav class="hidden gap-1.5 lg:flex" aria-label="منوی اصلی">
+          <a
+            href="#"
+            class="rounded-xl bg-accent-soft px-4.5 py-2 text-sm font-medium text-accent"
+            >خانه</a
+          >
+          <a
+            href="#categories"
+            class="rounded-xl px-4.5 py-2 text-sm font-medium text-muted transition-colors hover:bg-accent-soft hover:text-accent"
+            >دسته‌ها</a
+          >
+          <a
+            href="#products"
+            class="rounded-xl px-4.5 py-2 text-sm font-medium text-muted transition-colors hover:bg-accent-soft hover:text-accent"
+            >محصولات</a
+          >
+          <a
+            href="#support"
+            class="rounded-xl px-4.5 py-2 text-sm font-medium text-muted transition-colors hover:bg-accent-soft hover:text-accent"
+            >پشتیبانی</a
+          >
+        </nav>
 
-  <!-- هدر -->
-  <header class="flex items-center justify-between">
-    <a href="#" class="flex items-center gap-2.5 text-lg font-extrabold">
-      <span class="grid size-10 place-items-center rounded-xl bg-accent text-xl font-extrabold text-on-accent">پ</span>
-      <span>پریمو</span>
-    </a>
+        <div class="flex gap-2.5">
+          <!-- دکمه‌ی تم: آیکون ماه و خورشید با variant های dark عوض می‌شوند -->
+          <button
+            id="themeToggle"
+            type="button"
+            aria-label="تغییر تم"
+            class="relative grid size-10 place-items-center overflow-hidden rounded-xl border border-line bg-surface"
+          >
+            <svg
+              class="icon absolute size-5 opacity-100 transition-[rotate,scale,opacity] duration-600 ease-smooth dark:scale-30 dark:rotate-90 dark:opacity-0"
+            >
+              <use href="#i-moon" />
+            </svg>
+            <svg
+              class="icon absolute size-5 -rotate-90 scale-30 opacity-0 transition-[rotate,scale,opacity] duration-600 ease-smooth dark:rotate-0 dark:scale-100 dark:text-brand-yellow dark:opacity-100"
+            >
+              <use href="#i-sun" />
+            </svg>
+          </button>
+          <a
+            href="#"
+            aria-label="سبد خرید"
+            class="grid size-10 place-items-center rounded-xl border border-line bg-surface"
+          >
+            <svg class="icon size-5"><use href="#i-cart" /></svg>
+          </a>
+        </div>
+      </header>
 
-    <!-- منوی دسکتاپ -->
-    <nav class="hidden gap-1.5 lg:flex" aria-label="منوی اصلی">
-      <a href="#" class="rounded-xl bg-accent-soft px-4.5 py-2 text-sm font-medium text-accent">خانه</a>
-      <a href="#categories" class="rounded-xl px-4.5 py-2 text-sm font-medium text-muted transition-colors hover:bg-accent-soft hover:text-accent">دسته‌ها</a>
-      <a href="#products" class="rounded-xl px-4.5 py-2 text-sm font-medium text-muted transition-colors hover:bg-accent-soft hover:text-accent">محصولات</a>
-      <a href="#support" class="rounded-xl px-4.5 py-2 text-sm font-medium text-muted transition-colors hover:bg-accent-soft hover:text-accent">پشتیبانی</a>
+      <!-- جستجو -->
+      <label
+        class="mt-4 flex h-12 items-center gap-2.5 rounded-2xl border border-line bg-surface px-4 text-muted lg:mx-auto lg:max-w-160"
+      >
+        <svg class="icon size-5"><use href="#i-search" /></svg>
+        <input
+          type="search"
+          placeholder="جستجوی تلگرام پرمیوم، ChatGPT، Claude…"
+          class="h-full min-w-0 flex-1 bg-transparent text-[13px] text-fg outline-none placeholder:text-muted"
+        />
+      </label>
+
+      <!-- بنر -->
+      <section
+        class="relative mt-4 min-h-55 overflow-hidden rounded-3xl bg-linear-to-br from-hero-from to-hero-to px-5 py-5.5 text-white md:min-h-65 lg:min-h-80 lg:px-12 lg:py-10"
+      >
+        <div
+          class="relative z-10 max-w-[62%] max-[380px]:max-w-[58%] md:max-w-1/2 lg:max-w-[46%]"
+        >
+          <span
+            class="inline-block rounded-full bg-white/12 px-3 py-0.5 text-[11px] font-bold text-brand-yellow"
+            >تحویل آنی در چند دقیقه</span
+          >
+          <h1
+            class="mt-3 mb-2 text-[clamp(21px,6.6vw,26px)] leading-[1.45] font-extrabold md:text-[30px] lg:text-[40px]"
+          >
+            اکانت پرمیوم بدون دردسر
+          </h1>
+          <p
+            class="text-[clamp(11px,3.1vw,12px)] text-white/80 md:text-[13px] lg:text-[15px]"
+          >
+            تلگرام پرمیوم و ابزارهای هوش مصنوعی با گارانتی و پشتیبانی فارسی
+          </p>
+          <a
+            href="#products"
+            class="mt-3.5 inline-block rounded-[14px] bg-brand-yellow px-5.5 py-2 text-[13px] font-extrabold text-ink lg:px-8 lg:py-3 lg:text-[15px]"
+            >مشاهده محصولات</a
+          >
+        </div>
+        <div
+          class="absolute bottom-6.5 left-4.5 h-27.5 w-24 origin-bottom-left max-[380px]:bottom-5 max-[380px]:left-3 max-[380px]:scale-75 lg:bottom-15 lg:left-22.5 lg:scale-[1.7]"
+          aria-hidden="true"
+        >
+          <span
+            class="absolute top-4.5 left-5.5 h-21 w-18 rotate-12 rounded-2xl bg-[#a99cf5] opacity-90"
+          ></span>
+          <div
+            class="absolute top-0 left-0.5 h-23 w-19 -rotate-9 rounded-2xl bg-brand-yellow px-2.5 py-3.5"
+          >
+            <span class="mb-3 block size-4.5 rounded-full bg-[#3a3345]"></span>
+            <span class="mb-1.75 block h-1.25 rounded-[3px] bg-black/20"></span>
+            <span class="block h-1.25 w-3/5 rounded-[3px] bg-black/20"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ویژگی‌ها -->
+      <div class="mt-5 grid grid-cols-3 gap-2 min-[381px]:gap-3 md:gap-5">
+        <div
+          class="flex flex-col items-center gap-2 rounded-2xl border border-line bg-surface px-1.5 py-3.5 text-center text-[11px] font-bold min-[381px]:text-xs lg:flex-row lg:justify-center lg:p-4.5 lg:text-sm"
+        >
+          <span
+            class="grid size-8 place-items-center rounded-full bg-accent-soft text-accent"
+            ><svg class="icon size-4"><use href="#i-bolt" /></svg></span
+          >تحویل آنی
+        </div>
+        <div
+          class="flex flex-col items-center gap-2 rounded-2xl border border-line bg-surface px-1.5 py-3.5 text-center text-[11px] font-bold min-[381px]:text-xs lg:flex-row lg:justify-center lg:p-4.5 lg:text-sm"
+        >
+          <span
+            class="grid size-8 place-items-center rounded-full bg-accent-soft text-accent"
+            ><svg class="icon size-4"><use href="#i-shield" /></svg></span
+          >گارانتی تعویض
+        </div>
+        <div
+          class="flex flex-col items-center gap-2 rounded-2xl border border-line bg-surface px-1.5 py-3.5 text-center text-[11px] font-bold min-[381px]:text-xs lg:flex-row lg:justify-center lg:p-4.5 lg:text-sm"
+        >
+          <span
+            class="grid size-8 place-items-center rounded-full bg-accent-soft text-accent"
+            ><svg class="icon size-4"><use href="#i-chat" /></svg></span
+          >پشتیبانی فارسی
+        </div>
+      </div>
+
+      <!-- دسته‌بندی‌ها -->
+      <section id="categories" class="mt-7">
+        <div class="mb-3.5 flex items-center justify-between">
+          <h2 class="text-lg font-extrabold lg:text-[22px]">دسته‌بندی‌ها</h2>
+          <a href="#" class="text-xs font-medium text-accent">مشاهده همه</a>
+        </div>
+        <!-- گوشی کوچک: اسکرول افقی، بقیه: چهار ستون -->
+        <div
+          class="flex snap-x snap-mandatory gap-2.5 overflow-x-auto scrollbar-none min-[381px]:grid min-[381px]:grid-cols-4 md:gap-4 [&::-webkit-scrollbar]:hidden"
+        >
+          <a
+            href="#"
+            class="flex w-24 min-w-0 shrink-0 snap-start flex-col items-center gap-2.5 rounded-[18px] border border-line bg-surface px-1 py-3.5 text-center text-[clamp(11px,3.2vw,12px)] font-bold min-[381px]:w-auto"
+          >
+            <span
+              class="grid size-11 place-items-center rounded-full bg-tg-bg text-xl font-extrabold text-tg-fg"
+              >T</span
+            >تلگرام
+          </a>
+          <a
+            href="#"
+            class="flex w-24 min-w-0 shrink-0 snap-start flex-col items-center gap-2.5 rounded-[18px] border border-line bg-surface px-1 py-3.5 text-center text-[clamp(11px,3.2vw,12px)] font-bold min-[381px]:w-auto"
+          >
+            <span
+              class="grid size-11 place-items-center rounded-full bg-gpt-bg text-xl font-extrabold text-gpt-fg"
+              >G</span
+            >ChatGPT
+          </a>
+          <a
+            href="#"
+            class="flex w-24 min-w-0 shrink-0 snap-start flex-col items-center gap-2.5 rounded-[18px] border border-line bg-surface px-1 py-3.5 text-center text-[clamp(11px,3.2vw,12px)] font-bold min-[381px]:w-auto"
+          >
+            <span
+              class="grid size-11 place-items-center rounded-full bg-cl-bg text-xl font-extrabold text-cl-fg"
+              >C</span
+            >Claude
+          </a>
+          <a
+            href="#"
+            class="flex w-24 min-w-0 shrink-0 snap-start flex-col items-center gap-2.5 rounded-[18px] border border-line bg-surface px-1 py-3.5 text-center text-[clamp(11px,3.2vw,12px)] font-bold min-[381px]:w-auto"
+          >
+            <span
+              class="grid size-11 place-items-center rounded-full bg-mj-bg text-xl font-extrabold text-mj-fg"
+              >M</span
+            >Midjourney
+          </a>
+        </div>
+      </section>
+
+      <!-- پرفروش‌ترین‌ها -->
+      <section id="products" class="mt-7">
+        <div class="mb-3.5 flex items-center justify-between">
+          <h2 class="text-lg font-extrabold lg:text-[22px]">پرفروش‌ترین‌ها</h2>
+          <a href="#" class="text-xs font-medium text-accent">مشاهده همه</a>
+        </div>
+        <div class="grid grid-cols-2 gap-2.5 min-[381px]:gap-4 md:grid-cols-4">
+          <article
+            class="rounded-[20px] border border-line bg-surface p-2 pb-3 shadow-card"
+          >
+            <div
+              class="relative grid h-17.5 place-items-center rounded-[14px] bg-tg-bg text-[34px] font-extrabold text-tg-fg min-[381px]:h-20"
+            >
+              T<span
+                class="absolute inset-s-2 top-2 rounded-full bg-brand-yellow px-2.5 text-[10px] font-extrabold text-ink"
+                >پرفروش</span
+              >
+            </div>
+            <h3 class="mx-2 mt-3 text-[13px] font-extrabold">تلگرام پرمیوم</h3>
+            <p class="mx-2 text-[11px] text-muted">اشتراک ۳ ماهه</p>
+            <p
+              class="mx-2 mt-2.5 mb-3 text-sm font-extrabold min-[381px]:text-[15px]"
+            >
+              ۴۹۹,۰۰۰<small class="ms-1 text-[10px] font-normal text-muted"
+                >تومان</small
+              >
+            </p>
+            <button
+              type="button"
+              class="h-9.5 w-full rounded-xl bg-accent text-xs font-extrabold text-on-accent transition-transform active:scale-[.97]"
+            >
+              افزودن به سبد
+            </button>
+          </article>
+
+          <article
+            class="rounded-[20px] border border-line bg-surface p-2 pb-3 shadow-card"
+          >
+            <div
+              class="relative grid h-17.5 place-items-center rounded-[14px] bg-gpt-bg text-[34px] font-extrabold text-gpt-fg min-[381px]:h-20"
+            >
+              G<span
+                class="absolute inset-s-2 top-2 rounded-full bg-brand-yellow px-2.5 text-[10px] font-extrabold text-ink"
+                >پرفروش</span
+              >
+            </div>
+            <h3 class="mx-2 mt-3 text-[13px] font-extrabold">ChatGPT Plus</h3>
+            <p class="mx-2 text-[11px] text-muted">اشتراک ۱ ماهه</p>
+            <p
+              class="mx-2 mt-2.5 mb-3 text-sm font-extrabold min-[381px]:text-[15px]"
+            >
+              ۱,۲۹۰,۰۰۰<small class="ms-1 text-[10px] font-normal text-muted"
+                >تومان</small
+              >
+            </p>
+            <button
+              type="button"
+              class="h-9.5 w-full rounded-xl bg-accent text-xs font-extrabold text-on-accent transition-transform active:scale-[.97]"
+            >
+              افزودن به سبد
+            </button>
+          </article>
+
+          <article
+            class="rounded-[20px] border border-line bg-surface p-2 pb-3 shadow-card"
+          >
+            <div
+              class="relative grid h-17.5 place-items-center rounded-[14px] bg-cl-bg text-[34px] font-extrabold text-cl-fg min-[381px]:h-20"
+            >
+              C
+            </div>
+            <h3 class="mx-2 mt-3 text-[13px] font-extrabold">Claude Pro</h3>
+            <p class="mx-2 text-[11px] text-muted">اشتراک ۱ ماهه</p>
+            <p
+              class="mx-2 mt-2.5 mb-3 text-sm font-extrabold min-[381px]:text-[15px]"
+            >
+              ۱,۳۹۰,۰۰۰<small class="ms-1 text-[10px] font-normal text-muted"
+                >تومان</small
+              >
+            </p>
+            <button
+              type="button"
+              class="h-9.5 w-full rounded-xl bg-accent text-xs font-extrabold text-on-accent transition-transform active:scale-[.97]"
+            >
+              افزودن به سبد
+            </button>
+          </article>
+
+          <article
+            class="rounded-[20px] border border-line bg-surface p-2 pb-3 shadow-card"
+          >
+            <div
+              class="relative grid h-17.5 place-items-center rounded-[14px] bg-gem-bg text-[34px] font-extrabold text-gem-fg min-[381px]:h-20"
+            >
+              G
+            </div>
+            <h3 class="mx-2 mt-3 text-[13px] font-extrabold">
+              Gemini Advanced
+            </h3>
+            <p class="mx-2 text-[11px] text-muted">اشتراک ۱ ماهه</p>
+            <p
+              class="mx-2 mt-2.5 mb-3 text-sm font-extrabold min-[381px]:text-[15px]"
+            >
+              ۱,۱۹۰,۰۰۰<small class="ms-1 text-[10px] font-normal text-muted"
+                >تومان</small
+              >
+            </p>
+            <button
+              type="button"
+              class="h-9.5 w-full rounded-xl bg-accent text-xs font-extrabold text-on-accent transition-transform active:scale-[.97]"
+            >
+              افزودن به سبد
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <!-- چطور خرید کنم؟ -->
+      <section class="mt-7">
+        <div class="mb-3.5">
+          <h2 class="text-lg font-extrabold lg:text-[22px]">چطور خرید کنم؟</h2>
+        </div>
+        <ol
+          class="rounded-[20px] border border-line bg-surface px-4 py-4.5 lg:grid lg:grid-cols-3 lg:gap-6 lg:p-7"
+        >
+          <li class="relative flex items-start gap-3 pb-3.5 lg:pb-0">
+            <span
+              class="absolute inset-s-4.25 top-9.5 bottom-0.5 border-s-[1.5px] border-dashed border-line lg:hidden"
+              aria-hidden="true"
+            ></span>
+            <span
+              class="grid size-9 shrink-0 place-items-center rounded-full bg-accent-soft text-sm font-extrabold text-accent"
+              >۱</span
+            >
+            <div>
+              <b class="block text-sm">محصول را انتخاب کن</b
+              ><span class="text-[11px] text-muted"
+                >تلگرام پرمیوم یا هر ابزار هوش مصنوعی</span
+              >
+            </div>
+          </li>
+          <li class="relative flex items-start gap-3 pb-3.5 lg:pb-0">
+            <span
+              class="absolute inset-s-4.25 top-9.5 bottom-0.5 border-s-[1.5px] border-dashed border-line lg:hidden"
+              aria-hidden="true"
+            ></span>
+            <span
+              class="grid size-9 shrink-0 place-items-center rounded-full bg-accent-soft text-sm font-extrabold text-accent"
+              >۲</span
+            >
+            <div>
+              <b class="block text-sm">امن پرداخت کن</b
+              ><span class="text-[11px] text-muted"
+                >پرداخت با درگاه بانکی ایرانی</span
+              >
+            </div>
+          </li>
+          <li class="relative flex items-start gap-3">
+            <span
+              class="grid size-9 shrink-0 place-items-center rounded-full bg-accent-soft text-sm font-extrabold text-accent"
+              >۳</span
+            >
+            <div>
+              <b class="block text-sm">آنی تحویل بگیر</b
+              ><span class="text-[11px] text-muted"
+                >اطلاعات اکانت در همان لحظه ارسال می‌شود</span
+              >
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- پشتیبانی -->
+      <section
+        id="support"
+        class="relative mt-7 flex items-center justify-between overflow-hidden rounded-[22px] bg-brand-yellow p-5 text-ink lg:px-12 lg:py-8"
+      >
+        <span
+          class="absolute top-1/2 left-1.5 size-22 -translate-y-1/2 rounded-full bg-black/6"
+          aria-hidden="true"
+        ></span>
+        <div class="relative">
+          <h3 class="text-lg font-extrabold">سؤالی داری؟</h3>
+          <p class="mt-0.5 mb-3 text-[11px]">
+            پشتیبان‌ها ۲۴ ساعته در تلگرام پاسخ می‌دهند
+          </p>
+          <a
+            href="#"
+            class="inline-block rounded-[14px] bg-navy px-5.5 py-2 text-[13px] font-extrabold text-white"
+            >گفتگو با پشتیبان</a
+          >
+        </div>
+      </section>
+
+      <footer class="mt-7 text-center text-[11px] text-muted">
+        © ۱۴۰۵ پریمو، همه حقوق محفوظ است
+      </footer>
+    </main>
+
+    <!-- ناوبری پایین (فقط موبایل و تبلت) -->
+    <nav
+      id="bottomNav"
+      aria-label="ناوبری اصلی"
+      class="fixed inset-x-0 bottom-0 z-10 flex justify-center border-t border-line bg-nav px-3 pt-5.5 pb-[calc(8px+env(safe-area-inset-bottom,0px))] lg:hidden"
+    >
+      <!-- پس‌زمینه‌ی نوار با فرورفتگی؛ مسیرش را JS می‌کشد -->
+      <svg
+        class="nav-bg pointer-events-none absolute top-0 left-0 z-0"
+        aria-hidden="true"
+      >
+        <path class="nav-fill fill-nav" />
+        <path class="nav-line fill-none stroke-line" />
+      </svg>
+      <span
+        class="nav-dot pointer-events-none absolute top-1 left-0 z-10 size-2.5 rounded-full bg-accent shadow-[0_0_10px_var(--accent)] will-change-transform"
+        aria-hidden="true"
+      ></span>
+
+      <div class="relative z-10 grid w-full max-w-120 grid-cols-4 md:max-w-240">
+        <a
+          href="#"
+          aria-current="page"
+          class="nav-item group flex flex-col items-center gap-0.5 text-[10px] text-muted transition-colors duration-300 aria-[current=page]:font-extrabold aria-[current=page]:text-accent"
+        >
+          <span class="grid h-7 w-11 place-items-center"
+            ><svg
+              class="icon size-5.5 group-aria-[current=page]:animate-nav-pop motion-reduce:animate-none"
+            >
+              <use href="#i-home" /></svg></span
+          >خانه
+        </a>
+        <a
+          href="#"
+          class="nav-item group flex flex-col items-center gap-0.5 text-[10px] text-muted transition-colors duration-300 aria-[current=page]:font-extrabold aria-[current=page]:text-accent"
+        >
+          <span class="grid h-7 w-11 place-items-center"
+            ><svg
+              class="icon size-5.5 group-aria-[current=page]:animate-nav-pop motion-reduce:animate-none"
+            >
+              <use href="#i-grid" /></svg></span
+          >دسته‌ها
+        </a>
+        <a
+          href="#"
+          class="nav-item group flex flex-col items-center gap-0.5 text-[10px] text-muted transition-colors duration-300 aria-[current=page]:font-extrabold aria-[current=page]:text-accent"
+        >
+          <span class="grid h-7 w-11 place-items-center"
+            ><svg
+              class="icon size-5.5 group-aria-[current=page]:animate-nav-pop motion-reduce:animate-none"
+            >
+              <use href="#i-cart" /></svg></span
+          >سبد خرید
+        </a>
+        <a
+          href="#"
+          class="nav-item group flex flex-col items-center gap-0.5 text-[10px] text-muted transition-colors duration-300 aria-[current=page]:font-extrabold aria-[current=page]:text-accent"
+        >
+          <span class="grid h-7 w-11 place-items-center"
+            ><svg
+              class="icon size-5.5 group-aria-[current=page]:animate-nav-pop motion-reduce:animate-none"
+            >
+              <use href="#i-user" /></svg></span
+          >حساب من
+        </a>
+      </div>
     </nav>
 
-    <div class="flex gap-2.5">
-      <!-- دکمه‌ی تم: آیکون ماه و خورشید با variant های dark عوض می‌شوند -->
-      <button id="themeToggle" type="button" aria-label="تغییر تم"
-        class="relative grid size-10 place-items-center overflow-hidden rounded-xl border border-line bg-surface">
-        <svg class="icon absolute size-5 opacity-100 transition-[rotate,scale,opacity] duration-600 ease-smooth dark:scale-30 dark:rotate-90 dark:opacity-0"><use href="#i-moon"/></svg>
-        <svg class="icon absolute size-5 -rotate-90 scale-30 opacity-0 transition-[rotate,scale,opacity] duration-600 ease-smooth dark:rotate-0 dark:scale-100 dark:text-brand-yellow dark:opacity-100"><use href="#i-sun"/></svg>
-      </button>
-      <a href="#" aria-label="سبد خرید" class="grid size-10 place-items-center rounded-xl border border-line bg-surface">
-        <svg class="icon size-5"><use href="#i-cart"/></svg>
-      </a>
-    </div>
-  </header>
-
-  <!-- جستجو -->
-  <label class="mt-4 flex h-12 items-center gap-2.5 rounded-2xl border border-line bg-surface px-4 text-muted lg:mx-auto lg:max-w-160">
-    <svg class="icon size-5"><use href="#i-search"/></svg>
-    <input type="search" placeholder="جستجوی تلگرام پرمیوم، ChatGPT، Claude…"
-      class="h-full min-w-0 flex-1 bg-transparent text-[13px] text-fg outline-none placeholder:text-muted">
-  </label>
-
-  <!-- بنر -->
-  <section class="relative mt-4 min-h-55 overflow-hidden rounded-3xl bg-linear-to-br from-hero-from to-hero-to px-5 py-5.5 text-white md:min-h-65 lg:min-h-80 lg:px-12 lg:py-10">
-    <div class="relative z-10 ms-auto max-w-[62%] max-[380px]:max-w-[58%] md:max-w-1/2 lg:max-w-[46%]">
-      <span class="inline-block rounded-full bg-white/12 px-3 py-0.5 text-[11px] font-bold text-brand-yellow">تحویل آنی در چند دقیقه</span>
-      <h1 class="mt-3 mb-2 text-[clamp(21px,6.6vw,26px)] leading-[1.45] font-extrabold md:text-[30px] lg:text-[40px]">اکانت پرمیوم بدون دردسر</h1>
-      <p class="text-[clamp(11px,3.1vw,12px)] text-white/80 md:text-[13px] lg:text-[15px]">تلگرام پرمیوم و ابزارهای هوش مصنوعی با گارانتی و پشتیبانی فارسی</p>
-      <a href="#products" class="mt-3.5 inline-block rounded-[14px] bg-brand-yellow px-5.5 py-2 text-[13px] font-extrabold text-ink lg:px-8 lg:py-3 lg:text-[15px]">مشاهده محصولات</a>
-    </div>
-    <div class="absolute bottom-6.5 left-4.5 h-27.5 w-24 origin-bottom-left max-[380px]:bottom-5 max-[380px]:left-3 max-[380px]:scale-75 lg:bottom-15 lg:left-22.5 lg:scale-[1.7]" aria-hidden="true">
-      <span class="absolute top-4.5 left-5.5 h-21 w-18 rotate-12 rounded-2xl bg-[#a99cf5] opacity-90"></span>
-      <div class="absolute top-0 left-0.5 h-23 w-19 -rotate-9 rounded-2xl bg-brand-yellow px-2.5 py-3.5">
-        <span class="mb-3 block size-4.5 rounded-full bg-[#3a3345]"></span>
-        <span class="mb-1.75 block h-1.25 rounded-[3px] bg-black/20"></span>
-        <span class="block h-1.25 w-3/5 rounded-[3px] bg-black/20"></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ویژگی‌ها -->
-  <div class="mt-5 grid grid-cols-3 gap-2 min-[381px]:gap-3 md:gap-5">
-    <div class="flex flex-col items-center gap-2 rounded-2xl border border-line bg-surface px-1.5 py-3.5 text-center text-[11px] font-bold min-[381px]:text-xs lg:flex-row lg:justify-center lg:p-4.5 lg:text-sm">
-      <span class="grid size-8 place-items-center rounded-full bg-accent-soft text-accent"><svg class="icon size-4"><use href="#i-bolt"/></svg></span>تحویل آنی
-    </div>
-    <div class="flex flex-col items-center gap-2 rounded-2xl border border-line bg-surface px-1.5 py-3.5 text-center text-[11px] font-bold min-[381px]:text-xs lg:flex-row lg:justify-center lg:p-4.5 lg:text-sm">
-      <span class="grid size-8 place-items-center rounded-full bg-accent-soft text-accent"><svg class="icon size-4"><use href="#i-shield"/></svg></span>گارانتی تعویض
-    </div>
-    <div class="flex flex-col items-center gap-2 rounded-2xl border border-line bg-surface px-1.5 py-3.5 text-center text-[11px] font-bold min-[381px]:text-xs lg:flex-row lg:justify-center lg:p-4.5 lg:text-sm">
-      <span class="grid size-8 place-items-center rounded-full bg-accent-soft text-accent"><svg class="icon size-4"><use href="#i-chat"/></svg></span>پشتیبانی فارسی
-    </div>
-  </div>
-
-  <!-- دسته‌بندی‌ها -->
-  <section id="categories" class="mt-7">
-    <div class="mb-3.5 flex items-center justify-between">
-      <h2 class="text-lg font-extrabold lg:text-[22px]">دسته‌بندی‌ها</h2>
-      <a href="#" class="text-xs font-medium text-accent">مشاهده همه</a>
-    </div>
-    <!-- گوشی کوچک: اسکرول افقی، بقیه: چهار ستون -->
-    <div class="flex snap-x snap-mandatory gap-2.5 overflow-x-auto scrollbar-none min-[381px]:grid min-[381px]:grid-cols-4 md:gap-4 [&::-webkit-scrollbar]:hidden">
-      <a href="#" class="flex w-24 min-w-0 shrink-0 snap-start flex-col items-center gap-2.5 rounded-[18px] border border-line bg-surface px-1 py-3.5 text-center text-[clamp(11px,3.2vw,12px)] font-bold min-[381px]:w-auto">
-        <span class="grid size-11 place-items-center rounded-full bg-tg-bg text-xl font-extrabold text-tg-fg">T</span>تلگرام
-      </a>
-      <a href="#" class="flex w-24 min-w-0 shrink-0 snap-start flex-col items-center gap-2.5 rounded-[18px] border border-line bg-surface px-1 py-3.5 text-center text-[clamp(11px,3.2vw,12px)] font-bold min-[381px]:w-auto">
-        <span class="grid size-11 place-items-center rounded-full bg-gpt-bg text-xl font-extrabold text-gpt-fg">G</span>ChatGPT
-      </a>
-      <a href="#" class="flex w-24 min-w-0 shrink-0 snap-start flex-col items-center gap-2.5 rounded-[18px] border border-line bg-surface px-1 py-3.5 text-center text-[clamp(11px,3.2vw,12px)] font-bold min-[381px]:w-auto">
-        <span class="grid size-11 place-items-center rounded-full bg-cl-bg text-xl font-extrabold text-cl-fg">C</span>Claude
-      </a>
-      <a href="#" class="flex w-24 min-w-0 shrink-0 snap-start flex-col items-center gap-2.5 rounded-[18px] border border-line bg-surface px-1 py-3.5 text-center text-[clamp(11px,3.2vw,12px)] font-bold min-[381px]:w-auto">
-        <span class="grid size-11 place-items-center rounded-full bg-mj-bg text-xl font-extrabold text-mj-fg">M</span>Midjourney
-      </a>
-    </div>
-  </section>
-
-  <!-- پرفروش‌ترین‌ها -->
-  <section id="products" class="mt-7">
-    <div class="mb-3.5 flex items-center justify-between">
-      <h2 class="text-lg font-extrabold lg:text-[22px]">پرفروش‌ترین‌ها</h2>
-      <a href="#" class="text-xs font-medium text-accent">مشاهده همه</a>
-    </div>
-    <div class="grid grid-cols-2 gap-2.5 min-[381px]:gap-4 md:grid-cols-4">
-
-      <article class="rounded-[20px] border border-line bg-surface p-2 pb-3 shadow-card">
-        <div class="relative grid h-17.5 place-items-center rounded-[14px] bg-tg-bg text-[34px] font-extrabold text-tg-fg min-[381px]:h-20">
-          T<span class="absolute inset-s-2 top-2 rounded-full bg-brand-yellow px-2.5 text-[10px] font-extrabold text-ink">پرفروش</span>
-        </div>
-        <h3 class="mx-2 mt-3 text-[13px] font-extrabold">تلگرام پرمیوم</h3>
-        <p class="mx-2 text-[11px] text-muted">اشتراک ۳ ماهه</p>
-        <p class="mx-2 mt-2.5 mb-3 text-sm font-extrabold min-[381px]:text-[15px]">۴۹۹,۰۰۰<small class="ms-1 text-[10px] font-normal text-muted">تومان</small></p>
-        <button type="button" class="h-9.5 w-full rounded-xl bg-accent text-xs font-extrabold text-on-accent transition-transform active:scale-[.97]">افزودن به سبد</button>
-      </article>
-
-      <article class="rounded-[20px] border border-line bg-surface p-2 pb-3 shadow-card">
-        <div class="relative grid h-17.5 place-items-center rounded-[14px] bg-gpt-bg text-[34px] font-extrabold text-gpt-fg min-[381px]:h-20">
-          G<span class="absolute inset-s-2 top-2 rounded-full bg-brand-yellow px-2.5 text-[10px] font-extrabold text-ink">پرفروش</span>
-        </div>
-        <h3 class="mx-2 mt-3 text-[13px] font-extrabold">ChatGPT Plus</h3>
-        <p class="mx-2 text-[11px] text-muted">اشتراک ۱ ماهه</p>
-        <p class="mx-2 mt-2.5 mb-3 text-sm font-extrabold min-[381px]:text-[15px]">۱,۲۹۰,۰۰۰<small class="ms-1 text-[10px] font-normal text-muted">تومان</small></p>
-        <button type="button" class="h-9.5 w-full rounded-xl bg-accent text-xs font-extrabold text-on-accent transition-transform active:scale-[.97]">افزودن به سبد</button>
-      </article>
-
-      <article class="rounded-[20px] border border-line bg-surface p-2 pb-3 shadow-card">
-        <div class="relative grid h-17.5 place-items-center rounded-[14px] bg-cl-bg text-[34px] font-extrabold text-cl-fg min-[381px]:h-20">C</div>
-        <h3 class="mx-2 mt-3 text-[13px] font-extrabold">Claude Pro</h3>
-        <p class="mx-2 text-[11px] text-muted">اشتراک ۱ ماهه</p>
-        <p class="mx-2 mt-2.5 mb-3 text-sm font-extrabold min-[381px]:text-[15px]">۱,۳۹۰,۰۰۰<small class="ms-1 text-[10px] font-normal text-muted">تومان</small></p>
-        <button type="button" class="h-9.5 w-full rounded-xl bg-accent text-xs font-extrabold text-on-accent transition-transform active:scale-[.97]">افزودن به سبد</button>
-      </article>
-
-      <article class="rounded-[20px] border border-line bg-surface p-2 pb-3 shadow-card">
-        <div class="relative grid h-17.5 place-items-center rounded-[14px] bg-gem-bg text-[34px] font-extrabold text-gem-fg min-[381px]:h-20">G</div>
-        <h3 class="mx-2 mt-3 text-[13px] font-extrabold">Gemini Advanced</h3>
-        <p class="mx-2 text-[11px] text-muted">اشتراک ۱ ماهه</p>
-        <p class="mx-2 mt-2.5 mb-3 text-sm font-extrabold min-[381px]:text-[15px]">۱,۱۹۰,۰۰۰<small class="ms-1 text-[10px] font-normal text-muted">تومان</small></p>
-        <button type="button" class="h-9.5 w-full rounded-xl bg-accent text-xs font-extrabold text-on-accent transition-transform active:scale-[.97]">افزودن به سبد</button>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- چطور خرید کنم؟ -->
-  <section class="mt-7">
-    <div class="mb-3.5"><h2 class="text-lg font-extrabold lg:text-[22px]">چطور خرید کنم؟</h2></div>
-    <ol class="rounded-[20px] border border-line bg-surface px-4 py-4.5 lg:grid lg:grid-cols-3 lg:gap-6 lg:p-7">
-      <li class="relative flex items-start gap-3 pb-3.5 lg:pb-0">
-        <span class="absolute inset-s-4.25 top-9.5 bottom-0.5 border-s-[1.5px] border-dashed border-line lg:hidden" aria-hidden="true"></span>
-        <span class="grid size-9 shrink-0 place-items-center rounded-full bg-accent-soft text-sm font-extrabold text-accent">۱</span>
-        <div><b class="block text-sm">محصول را انتخاب کن</b><span class="text-[11px] text-muted">تلگرام پرمیوم یا هر ابزار هوش مصنوعی</span></div>
-      </li>
-      <li class="relative flex items-start gap-3 pb-3.5 lg:pb-0">
-        <span class="absolute inset-s-4.25 top-9.5 bottom-0.5 border-s-[1.5px] border-dashed border-line lg:hidden" aria-hidden="true"></span>
-        <span class="grid size-9 shrink-0 place-items-center rounded-full bg-accent-soft text-sm font-extrabold text-accent">۲</span>
-        <div><b class="block text-sm">امن پرداخت کن</b><span class="text-[11px] text-muted">پرداخت با درگاه بانکی ایرانی</span></div>
-      </li>
-      <li class="relative flex items-start gap-3">
-        <span class="grid size-9 shrink-0 place-items-center rounded-full bg-accent-soft text-sm font-extrabold text-accent">۳</span>
-        <div><b class="block text-sm">آنی تحویل بگیر</b><span class="text-[11px] text-muted">اطلاعات اکانت در همان لحظه ارسال می‌شود</span></div>
-      </li>
-    </ol>
-  </section>
-
-  <!-- پشتیبانی -->
-  <section id="support" class="relative mt-7 flex items-center justify-between overflow-hidden rounded-[22px] bg-brand-yellow p-5 text-ink lg:px-12 lg:py-8">
-    <span class="absolute top-1/2 left-1.5 size-22 -translate-y-1/2 rounded-full bg-black/6" aria-hidden="true"></span>
-    <div class="relative ms-auto">
-      <h3 class="text-lg font-extrabold">سؤالی داری؟</h3>
-      <p class="mt-0.5 mb-3 text-[11px]">پشتیبان‌ها ۲۴ ساعته در تلگرام پاسخ می‌دهند</p>
-      <a href="#" class="inline-block rounded-[14px] bg-navy px-5.5 py-2 text-[13px] font-extrabold text-white">گفتگو با پشتیبان</a>
-    </div>
-  </section>
-
-  <footer class="mt-7 text-center text-[11px] text-muted">© ۱۴۰۵ پریمو، همه حقوق محفوظ است</footer>
-</main>
-
-<!-- ناوبری پایین (فقط موبایل و تبلت) -->
-<nav id="bottomNav" aria-label="ناوبری اصلی"
-  class="fixed inset-x-0 bottom-0 z-10 flex justify-center border-t border-line bg-nav px-3 pt-5.5 pb-[calc(8px+env(safe-area-inset-bottom,0px))] lg:hidden">
-  <!-- پس‌زمینه‌ی نوار با فرورفتگی؛ مسیرش را JS می‌کشد -->
-  <svg class="nav-bg pointer-events-none absolute top-0 left-0 z-0" aria-hidden="true">
-    <path class="nav-fill fill-nav"/>
-    <path class="nav-line fill-none stroke-line"/>
-  </svg>
-  <span class="nav-dot pointer-events-none absolute top-1 left-0 z-10 size-2.5 rounded-full bg-accent shadow-[0_0_10px_var(--accent)] will-change-transform" aria-hidden="true"></span>
-
-  <div class="relative z-10 grid w-full max-w-120 grid-cols-4 md:max-w-240">
-    <a href="#" aria-current="page" class="nav-item group flex flex-col items-center gap-0.5 text-[10px] text-muted transition-colors duration-300 aria-[current=page]:font-extrabold aria-[current=page]:text-accent">
-      <span class="grid h-7 w-11 place-items-center"><svg class="icon size-5.5 group-aria-[current=page]:animate-nav-pop motion-reduce:animate-none"><use href="#i-home"/></svg></span>خانه
-    </a>
-    <a href="#" class="nav-item group flex flex-col items-center gap-0.5 text-[10px] text-muted transition-colors duration-300 aria-[current=page]:font-extrabold aria-[current=page]:text-accent">
-      <span class="grid h-7 w-11 place-items-center"><svg class="icon size-5.5 group-aria-[current=page]:animate-nav-pop motion-reduce:animate-none"><use href="#i-grid"/></svg></span>دسته‌ها
-    </a>
-    <a href="#" class="nav-item group flex flex-col items-center gap-0.5 text-[10px] text-muted transition-colors duration-300 aria-[current=page]:font-extrabold aria-[current=page]:text-accent">
-      <span class="grid h-7 w-11 place-items-center"><svg class="icon size-5.5 group-aria-[current=page]:animate-nav-pop motion-reduce:animate-none"><use href="#i-cart"/></svg></span>سبد خرید
-    </a>
-    <a href="#" class="nav-item group flex flex-col items-center gap-0.5 text-[10px] text-muted transition-colors duration-300 aria-[current=page]:font-extrabold aria-[current=page]:text-accent">
-      <span class="grid h-7 w-11 place-items-center"><svg class="icon size-5.5 group-aria-[current=page]:animate-nav-pop motion-reduce:animate-none"><use href="#i-user"/></svg></span>حساب من
-    </a>
-  </div>
-</nav>
-
-<script>
-  
-// ---------- تغییر تم ----------
-(function () {
-  var root = document.documentElement;
-  var btn = document.getElementById('themeToggle');
-  var meta = document.querySelector('meta[name="theme-color"]');
-  var barColor = { light: '#eef0fc', dark: '#090a1c' };
-  var timer;
- 
-  // رنگ‌ها از CSS و آیکون از روی data-theme (variant های dark) عوض می‌شود
-  function apply(theme) {
-    root.setAttribute('data-theme', theme);
-    btn.setAttribute('aria-pressed', theme === 'dark');
-    btn.setAttribute('aria-label', theme === 'dark' ? 'تغییر به حالت روشن' : 'تغییر به حالت تاریک');
-    if (meta) meta.setAttribute('content', barColor[theme]);
-  }
- 
-  // کلاس انیمیشن فقط موقع تغییر تم فعال است
-  function switchTheme(theme, save) {
-    root.classList.add('theme-anim');
-    apply(theme);
-    if (save) { try { localStorage.setItem('theme', theme); } catch (e) {} }
-    clearTimeout(timer);
-    timer = setTimeout(function () { root.classList.remove('theme-anim'); }, 700);
-  }
- 
-  apply(root.getAttribute('data-theme') || 'light');
- 
-  btn.addEventListener('click', function () {
-    switchTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true);
-  });
- 
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-    var saved = null;
-    try { saved = localStorage.getItem('theme'); } catch (err) {}
-    if (!saved) switchTheme(e.matches ? 'dark' : 'light', false);
-  });
-})();
- 
-// ---------- نوار پایین: فرورفتگی و نقطه زیر آیتم فعال ----------
-(function () {
-  var nav = document.getElementById('bottomNav');
-  var svg = nav.querySelector('.nav-bg');
-  var fill = nav.querySelector('.nav-fill');
-  var line = nav.querySelector('.nav-line');
-  var dot = nav.querySelector('.nav-dot');
-  var items = nav.querySelectorAll('.nav-item');
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var HALF = 42, FLAT = 14, DEPTH = 18; // نصف عرض، نصف کف و عمق فرورفتگی
-  var cur = null, raf = 0;
- 
-  function draw(c) {
-    var W = nav.clientWidth, H = nav.clientHeight;
-    if (!W) return;
-    c = Math.max(HALF, Math.min(W - HALF, c));
-    var top = 'M0 .5H' + (c - HALF) +
-      'C' + (c - HALF + 14) + ' .5 ' + (c - FLAT - 14) + ' ' + DEPTH + ' ' + (c - FLAT) + ' ' + DEPTH +
-      'H' + (c + FLAT) +
-      'C' + (c + FLAT + 14) + ' ' + DEPTH + ' ' + (c + HALF - 14) + ' .5 ' + (c + HALF) + ' .5' +
-      'H' + W;
-    svg.setAttribute('width', W);
-    svg.setAttribute('height', H);
-    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-    fill.setAttribute('d', top + 'V' + H + 'H0Z');
-    line.setAttribute('d', top);
-    dot.style.transform = 'translateX(' + (c - 5) + 'px)';
-  }
- 
-  function targetX() {
-    var r = nav.querySelector('.nav-item[aria-current="page"]').getBoundingClientRect();
-    return r.left - nav.getBoundingClientRect().left + r.width / 2;
-  }
- 
-  function go(to, animate) {
-    cancelAnimationFrame(raf);
-    if (cur === null || !animate || reduce) { cur = to; draw(to); return; }
-    var from = cur, t0 = performance.now(), dur = 480;
-    (function step(t) {
-      var p = Math.min(1, (t - t0) / dur), q = p - 1;
-      var e = 1 + 2.3 * q * q * q + 1.3 * q * q; // easeOutBack ملایم
-      cur = from + (to - from) * e;
-      draw(cur);
-      if (p < 1) raf = requestAnimationFrame(step); else { cur = to; draw(to); }
-    })(t0);
-  }
- 
-  items.forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      if (a.getAttribute('href') === '#') e.preventDefault();
-      if (a.getAttribute('aria-current') === 'page') return;
-      nav.querySelector('.nav-item[aria-current="page"]').removeAttribute('aria-current');
-      a.setAttribute('aria-current', 'page');
-      go(targetX(), true);
-    });
-  });
- 
-  // بعد از فعال شدن JS، پس‌زمینه‌ی ساده‌ی نوار جایش را به SVG می‌دهد
-  nav.classList.remove('bg-nav', 'border-t', 'border-line');
-  go(targetX(), false);
-  new ResizeObserver(function () { go(targetX(), false); }).observe(nav);
-})();
-</script>
-</body>
+    <script src="./src/script.js">
+    </script>
+  </body>
 </html>
