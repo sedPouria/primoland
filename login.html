@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#eef0fc">
+<title>ورود | پریمو</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      var t = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
+<style>
+/* ============  توکن‌های رنگی سایت ============ */
+:root { --yellow: #ffc93c; --navy: #2b246b; --ink: #1a1640; --radius: 20px; }
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #eef0fc;
+  --glow-a: #cdbcf6; --glow-b: #c3d5f8; --glow-c: #ecd0f6;
+  --surface: #ffffff; --border: #e7e4f7; --text: #1a1640; --muted: #6b6890;
+  --accent: #3b2fdb; --on-accent: #ffffff; --accent-soft: #e8e5ff;
+  --danger: #e0473e; --danger-soft: #fdeceb;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #090a1c;
+  --glow-a: #40297f; --glow-b: #13286a; --glow-c: #3f1a5f;
+  --surface: #1a1836; --border: #2a2750; --text: #ffffff; --muted: #a3a0c6;
+  --accent: #ffc93c; --on-accent: #1a1640; --accent-soft: #2a2650;
+  --danger: #ff6b62; --danger-soft: #3a2130;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+  font-family: "Vazirmatn", Tahoma, system-ui, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  min-height: 100dvh; display: flex; flex-direction: column;
+  padding: max(20px, env(safe-area-inset-top)) 20px max(20px, env(safe-area-inset-bottom));
+}
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@property --glow-a { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --glow-b { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --glow-c { syntax: "<color>"; inherits: true; initial-value: transparent; }
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(70% 50% at 50% 0%, var(--glow-a), transparent 72%),
+    radial-gradient(60% 50% at 0% 100%, var(--glow-b), transparent 72%),
+    radial-gradient(60% 50% at 100% 100%, var(--glow-c), transparent 72%);
+}
+html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after {
+  transition: background-color .6s cubic-bezier(.4,0,.2,1), color .6s cubic-bezier(.4,0,.2,1),
+              border-color .6s cubic-bezier(.4,0,.2,1), box-shadow .6s cubic-bezier(.4,0,.2,1),
+              fill .6s, stroke .6s !important;
+}
+html.theme-anim { transition-property: --glow-a, --glow-b, --glow-c !important; }
+svg.i { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* ============ هدر ============ */
+.top { display: flex; align-items: center; justify-content: space-between; max-width: 420px; width: 100%; margin: 0 auto 8px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; }
+.logo-mark { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: var(--accent); color: var(--on-accent); font-size: 18px; font-weight: 800; }
+.icon-btn { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: var(--surface); border: 1px solid var(--border); position: relative; overflow: hidden; }
+.icon-btn svg.i { position: absolute; transition: transform .6s cubic-bezier(.4,0,.2,1), opacity .4s ease; }
+:root[data-theme="light"] .icon-btn .sun  { opacity: 0; transform: rotate(-90deg) scale(.3); }
+:root[data-theme="light"] .icon-btn .moon { opacity: 1; transform: rotate(0) scale(1); }
+:root[data-theme="dark"]  .icon-btn .moon { opacity: 0; transform: rotate(90deg) scale(.3); }
+:root[data-theme="dark"]  .icon-btn .sun  { opacity: 1; transform: rotate(0) scale(1); color: var(--yellow); }
+
+/* ============ کارت اصلی ============ */
+.wrap { flex: 1; display: flex; align-items: center; justify-content: center; }
+.card {
+  width: 100%; max-width: 420px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 26px; padding: 22px 22px 26px; box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  overflow: hidden;
+}
+.head { text-align: center; margin-bottom: 18px; }
+.head h1 { font-size: 20px; font-weight: 800; }
+.head p { font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+
+/* ============ کلید تب (ورود/ثبت‌نام) ============ */
+.tabs { position: relative; display: grid; grid-template-columns: 1fr 1fr; background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 4px; margin-bottom: 20px; }
+.tabs .thumb {
+  position: absolute; top: 4px; bottom: 4px; width: calc(50% - 4px);
+  background: var(--accent); border-radius: 12px;
+  transition: transform .45s cubic-bezier(.65,0,.35,1);
+}
+[data-mode="signup"] .tabs .thumb { transform: translateX(calc(-100% - 4px)); }
+html:not([dir="rtl"]) [data-mode="signup"] .tabs .thumb { transform: translateX(calc(100% + 4px)); }
+.tab { position: relative; z-index: 1; height: 40px; border-radius: 12px; background: none; border: 0; font-size: 13.5px; font-weight: 700; color: var(--muted); cursor: pointer; transition: color .35s ease; }
+.tab[aria-selected="true"] { color: var(--on-accent); }
+
+/* ============ فرم‌ها ============ */
+.viewport { position: relative; overflow: hidden; }
+.track { display: flex; width: 200%; transition: transform .5s cubic-bezier(.65,0,.35,1), height .4s ease; will-change: transform; }
+[data-mode="signup"] .track { transform: translateX(50%); }
+html:not([dir="rtl"]) [data-mode="signup"] .track { transform: translateX(-50%); }
+form { width: 50%; flex: none; display: flex; flex-direction: column; gap: 14px; padding: 2px; }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 12.5px; font-weight: 700; color: var(--muted); }
+.input-box { display: flex; align-items: center; gap: 8px; height: 48px; border-radius: 14px; padding-inline: 14px; background: var(--bg); border: 1px solid var(--border); transition: border-color .2s ease, box-shadow .2s ease; }
+.input-box:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.input-box svg.i { color: var(--muted); width: 18px; height: 18px; }
+.input-box input { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: none; font-size: 13.5px; color: var(--text); }
+.input-box input::placeholder { color: var(--muted); }
+.toggle-pass { background: none; border: 0; color: var(--muted); display: grid; place-items: center; padding: 2px; }
+
+.row-between { display: flex; align-items: center; justify-content: space-between; font-size: 12px; }
+.remember { display: flex; align-items: center; gap: 6px; color: var(--muted); }
+.remember input { accent-color: var(--accent); width: 15px; height: 15px; }
+.link-accent { color: var(--accent); font-weight: 700; }
+
+.submit { height: 48px; border-radius: 14px; border: 0; background: var(--accent); color: var(--on-accent); font-size: 14px; font-weight: 800; margin-top: 4px; cursor: pointer; transition: transform .15s ease, opacity .15s ease; }
+.submit:active { transform: scale(.98); }
+
+.terms { font-size: 11px; color: var(--muted); text-align: center; line-height: 1.9; }
+
+.divider { display: flex; align-items: center; gap: 10px; margin: 18px 0 14px; font-size: 11px; color: var(--muted); }
+.divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+.socials { display: flex; gap: 10px; }
+.social-btn { flex: 1; height: 46px; border-radius: 14px; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 12.5px; font-weight: 700; }
+
+.switch-line { text-align: center; font-size: 12.5px; color: var(--muted); margin-top: 18px; }
+.switch-line button { background: none; border: 0; color: var(--accent); font-weight: 800; cursor: pointer; padding: 0; }
+
+@media (min-width: 480px) {
+  .card { padding: 30px 32px 34px; border-radius: 30px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after,
+  .icon-btn svg.i, .tabs .thumb, .track { transition: none !important; }
+}
+</style>
+</head>
+
+<body data-mode="login">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="m4 6 8 7 8-7"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M3 3l18 18"/><path d="M10.6 5.2A10.6 10.6 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3.2 4.1M6.5 6.5A16.7 16.7 0 0 0 2 12s3.6 7 10 7c1.4 0 2.7-.3 3.9-.8"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></symbol>
+  <symbol id="i-google" viewBox="0 0 24 24"><path d="M21 12.2c0-.7-.06-1.4-.18-2H12v3.9h5.03a4.3 4.3 0 0 1-1.87 2.8v2.3h3.02c1.77-1.63 2.82-4.03 2.82-7z"/><path d="M12 21c2.4 0 4.4-.8 5.9-2.15l-3.02-2.3c-.84.56-1.9.9-2.88.9-2.2 0-4.07-1.5-4.74-3.5H4.15v2.35A9 9 0 0 0 12 21z"/><path d="M7.26 13.95a5.4 5.4 0 0 1 0-3.9V7.7H4.15a9 9 0 0 0 0 8.6z"/><path d="M12 6.6c1.3 0 2.47.45 3.4 1.32l2.55-2.55A8.9 8.9 0 0 0 12 3a9 9 0 0 0-7.85 4.7l3.11 2.35C8 8.1 9.8 6.6 12 6.6z"/></symbol>
+  <symbol id="i-telegram" viewBox="0 0 24 24"><path d="m3 11 17-7-3 16-6-5-3 3-1-5z"/></symbol>
+</svg>
+
+<header class="top">
+  <a href="index.html" class="logo"><span class="logo-mark">پ</span><span>پریمولند</span></a>
+  <button class="icon-btn" id="themeToggle" type="button" aria-label="تغییر تم">
+    <svg class="i moon"><use href="#i-moon"/></svg>
+    <svg class="i sun"><use href="#i-sun"/></svg>
+  </button>
+</header>
+
+<main class="wrap">
+  <section class="card" data-mode="login" id="authCard">
+    <div class="head">
+      <h1 id="headTitle">به پریمولند خوش اومدی</h1>
+      <p id="headSub">وارد حساب کاربری‌ات شو</p>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <span class="thumb" aria-hidden="true"></span>
+      <button class="tab" id="tabLogin" role="tab" aria-selected="true" type="button">ورود</button>
+      <button class="tab" id="tabSignup" role="tab" aria-selected="false" type="button">ثبت‌نام</button>
+    </div>
+
+    <div class="viewport">
+      <div class="track" id="track">
+
+        <!-- فرم ورود -->
+        <form id="formLogin" novalidate>
+          <div class="field">
+            <label for="li-email">ایمیل یا شماره موبایل</label>
+            <div class="input-box">
+              <svg class="i"><use href="#i-mail"/></svg>
+              <input id="li-email" type="text" inputmode="email" placeholder="example@mail.com" autocomplete="username">
+            </div>
+          </div>
+          <div class="field">
+            <label for="li-pass">رمز عبور</label>
+            <div class="input-box">
+              <svg class="i"><use href="#i-lock"/></svg>
+              <input id="li-pass" type="password" placeholder="••••••••" autocomplete="current-password">
+              <button type="button" class="toggle-pass" data-target="li-pass" aria-label="نمایش رمز عبور"><svg class="i"><use href="#i-eye"/></svg></button>
+            </div>
+          </div>
+          <div class="row-between">
+            <label class="remember"><input type="checkbox">مرا به خاطر بسپار</label>
+            <a href="#" class="link-accent">رمز عبور را فراموش کردی؟</a>
+          </div>
+          <button type="submit" class="submit">ورود به حساب</button>
+        </form>
+
+        <!-- فرم ثبت‌نام -->
+        <form id="formSignup" novalidate>
+          <div class="field">
+            <label for="su-name">نام و نام خانوادگی</label>
+            <div class="input-box">
+              <svg class="i"><use href="#i-user"/></svg>
+              <input id="su-name" type="text" placeholder="نام کامل" autocomplete="name">
+            </div>
+          </div>
+          <div class="field">
+            <label for="su-phone">شماره موبایل</label>
+            <div class="input-box">
+              <svg class="i"><use href="#i-phone"/></svg>
+              <input id="su-phone" type="tel" inputmode="numeric" placeholder="09xxxxxxxxx" autocomplete="tel">
+            </div>
+          </div>
+          <div class="field">
+            <label for="su-pass">رمز عبور</label>
+            <div class="input-box">
+              <svg class="i"><use href="#i-lock"/></svg>
+              <input id="su-pass" type="password" placeholder="حداقل ۸ کاراکتر" autocomplete="new-password">
+              <button type="button" class="toggle-pass" data-target="su-pass" aria-label="نمایش رمز عبور"><svg class="i"><use href="#i-eye"/></svg></button>
+            </div>
+          </div>
+          <p class="terms">با ثبت‌نام، <a href="#" class="link-accent">قوانین و مقررات</a> پریمو را می‌پذیری</p>
+          <button type="submit" class="submit">ساخت حساب کاربری</button>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="divider">یا ادامه با</div>
+    <div class="socials">
+      <button type="button" class="social-btn"><svg class="i" style="width:16px;height:16px"><use href="#i-google"/></svg>گوگل</button>
+      <button type="button" class="social-btn"><svg class="i" style="width:16px;height:16px;color:#2AABEE"><use href="#i-telegram"/></svg>تلگرام</button>
+    </div>
+
+    <p class="switch-line" id="switchLine">
+      حساب کاربری نداری؟ <button type="button" id="switchBtn">ثبت‌نام کن</button>
+    </p>
+  </section>
+</main>
+
+<script>
+// ---------- تغییر تم (مثل بقیه‌ی صفحات سایت) ----------
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById('themeToggle');
+  var meta = document.querySelector('meta[name="theme-color"]');
+  var barColor = { light: '#eef0fc', dark: '#090a1c' };
+  var timer;
+  function apply(theme) {
+    root.setAttribute('data-theme', theme);
+    btn.setAttribute('aria-label', theme === 'dark' ? 'تغییر به حالت روشن' : 'تغییر به حالت تاریک');
+    if (meta) meta.setAttribute('content', barColor[theme]);
+  }
+  function switchTheme(theme, save) {
+    root.classList.add('theme-anim');
+    apply(theme);
+    if (save) { try { localStorage.setItem('theme', theme); } catch (e) {} }
+    clearTimeout(timer);
+    timer = setTimeout(function () { root.classList.remove('theme-anim'); }, 700);
+  }
+  apply(root.getAttribute('data-theme') || 'light');
+  btn.addEventListener('click', function () {
+    switchTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true);
+  });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (err) {}
+    if (!saved) switchTheme(e.matches ? 'dark' : 'light', false);
+  });
+})();
+
+// ---------- نمایش/مخفی رمز عبور ----------
+document.querySelectorAll('.toggle-pass').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var input = document.getElementById(btn.dataset.target);
+    var show = input.type === 'password';
+    input.type = show ? 'text' : 'password';
+    btn.innerHTML = '<svg class="i"><use href="#' + (show ? 'i-eye-off' : 'i-eye') + '"/></svg>';
+  });
+});
+
+// ---------- سوییچ ورود / ثبت‌نام با انیمیشن ----------
+(function () {
+  var card = document.getElementById('authCard');
+  var track = document.getElementById('track');
+  var tabLogin = document.getElementById('tabLogin');
+  var tabSignup = document.getElementById('tabSignup');
+  var switchBtn = document.getElementById('switchBtn');
+  var switchLine = document.getElementById('switchLine');
+  var headTitle = document.getElementById('headTitle');
+  var headSub = document.getElementById('headSub');
+  var forms = { login: document.getElementById('formLogin'), signup: document.getElementById('formSignup') };
+
+  var copy = {
+    login:  { title: 'به پریمو خوش اومدی', sub: 'وارد حساب کاربری‌ات شو', switch: 'حساب کاربری نداری؟', switchBtn: 'ثبت‌نام کن' },
+    signup: { title: 'بساز و شروع کن', sub: 'در چند ثانیه حساب کاربری بساز', switch: 'قبلاً ثبت‌نام کردی؟', switchBtn: 'وارد شو' }
+  };
+
+  function setHeight() {
+    var active = card.dataset.mode === 'login' ? forms.login : forms.signup;
+    track.style.height = active.offsetHeight + 'px';
+  }
+
+  function go(mode) {
+    if (card.dataset.mode === mode) return;
+    card.dataset.mode = mode;
+    tabLogin.setAttribute('aria-selected', mode === 'login');
+    tabSignup.setAttribute('aria-selected', mode === 'signup');
+    var c = copy[mode];
+    headTitle.textContent = c.title;
+    headSub.textContent = c.sub;
+    switchLine.firstChild.textContent = c.switch + ' ';
+    switchBtn.textContent = c.switchBtn;
+    setHeight();
+  }
+
+  tabLogin.addEventListener('click', function () { go('login'); });
+  tabSignup.addEventListener('click', function () { go('signup'); });
+  switchBtn.addEventListener('click', function () { go(card.dataset.mode === 'login' ? 'signup' : 'login'); });
+
+  ['formLogin', 'formSignup'].forEach(function (id) {
+    document.getElementById(id).addEventListener('submit', function (e) { e.preventDefault(); });
+  });
+
+  setHeight();
+  window.addEventListener('resize', setHeight);
+  new ResizeObserver(setHeight).observe(forms.login);
+  new ResizeObserver(setHeight).observe(forms.signup);
+})();
+</script>
+</body>
+</html>
